@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RYUS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Cinzel:wght@400..900&family=Cormorant:ital,wght@0,300..700;1,300..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/a8f043ba81.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div id="theme-toggle">
+            <img id="theme-icon" src="images/moon.png" alt="Moon Icon">
+        </div>
+        
+        <h1>RYUS</h1>
+        
+        <div id="connectWalletButton">
+            <i class="fa-regular fa-user"></i>
+            <span>Connect Wallet</span>
+        </div>
+    </header>
+    
+    <main>
+        <section id="home">
+            <p class="catchphrase">Be yourself.</p>
+            <div id="brand-story">
+                <h2 class="our-story">Our Story</h2>
+                <p class="story-p">Confidence is a rare trait in today's world, especially in the Zoomers' society. With social disability being the new norm, we're reintroducing confidence through statement fashion and style.</p>
+            </div>
+        </section>
+
+        <section id="collections">
+            <div class="coming-soon">
+                <h2>Our Collections</h2>
+                <p>Coming soon.</p>
+            </div>
+            <div class="membership">
+                <h2>Join Our Membership</h2>
+                    <button id="connect-wallet-btn">Connect your wallet</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="socials">
+            <h3>Follow Us</h3>
+            <img src="images/x-black.png" alt="Dark X icon" class="dark-x-icon">
+            <img src="images/x-white.png" alt="Light X icon" class="light-x-icon">
+            <img src="images/insta-dark.png" alt="Dark Instagram icon" class="dark-insta-icon">
+            <img src="images/insta-light.png" alt="Light Instagram icon" class="light-insta-icon">
+        </div>
+        <p>&copy; 2024 RYUS. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+
+        // Load saved theme preference from localStorage
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            document.body.classList.add(savedTheme);
+            themeIcon.src = savedTheme === 'dark-mode' ? 'images/sun.png' : 'images/moon.png';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            // Toggle dark mode
+            const isDarkMode = document.body.classList.toggle('dark-mode');
+            themeIcon.src = isDarkMode ? 'images/sun.png' : 'images/moon.png';
+
+            // Save preference to localStorage
+            localStorage.setItem('theme', isDarkMode ? 'dark-mode' : 'light-mode');
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/ethers/dist/ethers.min.js"></script>
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        // Load saved theme preference from localStorage
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            body.classList.add(savedTheme);
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            
+            // Save theme preference
+            const isDarkMode = body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDarkMode ? 'dark-mode' : 'light-mode');
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
